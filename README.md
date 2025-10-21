@@ -50,13 +50,15 @@ To achieve an informative and clear visualization, the following criteria were a
 - Attributes such as name and role were kept in the graph as metadata for further use with Gephi or other tools.
 
 This was the result:
-<img width="314" height="244" alt="image" src="https://github.com/user-attachments/assets/1346d876-1f67-4251-afe3-f54fbf747908" />
+
+<img width="628" height="488" alt="image" src="https://github.com/user-attachments/assets/1346d876-1f67-4251-afe3-f54fbf747908" />
+
 (Translation Catalan - English: "Xarxa de co-implicació en crims entre persones" means "Co-involvement network in crimes between individuals".)
 
 We observe different groupings of people related to crimes. There is no clear segregation between genders.
 On the other hand, by creating the same graph with Gephi and using the same colors with the “Force Atlas” layout, the result was as follows:
 
-<img width="285" height="264" alt="image" src="https://github.com/user-attachments/assets/ce3e990f-f095-486f-a060-393fc47cc342" />
+<img width="570" height="528" alt="image" src="https://github.com/user-attachments/assets/ce3e990f-f095-486f-a060-393fc47cc342" />
 
 ## Analysis
 
@@ -66,7 +68,8 @@ To identify relevant individuals within the network, several centrality metrics 
 - **Betweenness centrality:** Identifies nodes that act as bridges between different parts of the network. These are crucial for the circulation of information or coordination.
 
 ## Results
-<img width="189" height="211" alt="image" src="https://github.com/user-attachments/assets/5ae6edb5-a2e8-416b-8358-90f14be551b7" />
+<img width="283.5" height="316.5" alt="image" src="https://github.com/user-attachments/assets/5ae6edb5-a2e8-416b-8358-90f14be551b7" />
+
 (Translation Catalan - English: "Grau" means "Degree", "Centralitat de vector propi" means "Eigenvector centrality" and "Centralitat de betweenness" means "Betweenness centrality".)
 
 - Using degree centrality, Katz Luella (Suspect) with 51 connections is likely a key figure within the criminal organization, being involved in many cases with other suspects or victims.
@@ -76,69 +79,94 @@ To identify relevant individuals within the network, several centrality metrics 
 - Thus, Katz Luella is not only the most connected but also influential and central, suggesting they may be a leader or central figure in the network.
 
 The degree distribution was also analyzed to see the number of connections per person:
-<img width="328" height="241" alt="image" src="https://github.com/user-attachments/assets/1785ac38-0ccb-41cb-9c8d-d4b591356b16" />
-(Translation Catalan - English: "Distribució del grau (n connexions per persona)" means "Degree distribution (number of connexions per person)", "Nombre de persones" means "Number of persons" and "Grau" means "Degree").
+
+<img width="492.5" height="361.5" alt="image" src="https://github.com/user-attachments/assets/1785ac38-0ccb-41cb-9c8d-d4b591356b16" />
+
+(Translation Catalan - English: Degree distribution (number of connexions per person), y: Number of persons, x: Degree).
 
 - Most people have a degree between 0 and 5, meaning most individuals are only connected to a few crimes or a few other people, with many local, loosely connected clusters. Some people have a degree of 30, indicating highly connected hubs.
 
 To analyze the network's morphology, connectivity and communities were studied:
 
-<img width="216" height="55" alt="image" src="https://github.com/user-attachments/assets/ebadc5a7-032d-47a2-8454-f868e101e3a5" />
+<img width="324" height="82.5" alt="image" src="https://github.com/user-attachments/assets/ebadc5a7-032d-47a2-8454-f868e101e3a5" />
 
+(Translation: 
+"Connectivity:
+Is connected? False
+Number of components: 20
+Size of the main component: 754"
+)
 
 - The network is not fully interconnected; not every person can reach every other person. This makes sense, as many cases are isolated and do not share involved individuals with other crimes.
 - There are 20 disjoint subsets of nodes, and the largest component contains 754 people, indicating strong interrelation within the main component.
 
 
-<img width="365" height="113" alt="image" src="https://github.com/user-attachments/assets/6a740de1-6e47-4af2-b0ea-8d29140fd785" />
+<img width="547.5" height="169.5" alt="image" src="https://github.com/user-attachments/assets/6a740de1-6e47-4af2-b0ea-8d29140fd785" />
 
+(Translation Catalan - English: "Comunitats detectades" means "Detected communities" and "Comunitat" means "Community")
 
 The Louvain community detection algorithm identified 47 densely interconnected groups. For example, community 1 has 79 members, which may indicate a gang, organized criminal group, or a set of related crimes.
 
 Other interesting interactions include relationships where two people share more than three crimes, indicating repeated collaboration. This was calculated by filtering edge weights greater than 3.
 
-<img width="277" height="101" alt="image" src="https://github.com/user-attachments/assets/d3ad20dd-8e6f-4a88-aeea-ff873fa0d57f" />
+<img width="447.5" height="151.5" alt="image" src="https://github.com/user-attachments/assets/d3ad20dd-8e6f-4a88-aeea-ff873fa0d57f" />
+
+(Translation: Relevant interactions (more than 3 crimes together): --> x shared crimes)
 
 Additionally, analyzing more insights regarding the gender, we obtain the following:
 
-<img width="227" height="313" alt="image" src="https://github.com/user-attachments/assets/38ea98a3-1a54-44c7-affb-55667c8ab598" />
+<img width="340.5" height="469.5" alt="image" src="https://github.com/user-attachments/assets/38ea98a3-1a54-44c7-affb-55667c8ab598" />
 
+(Translation: Sex: 558 Men, 271 Women
+
+Roles:
+Suspect: 373 people
+Victim: 317 people
+Witness: 117 people
+Victim Suspect: 22 people
+
+Community 37 with single role: Victim)
 
 - The analysis shows the network is dominated by men (558) compared to women (271), which may reflect male overrepresentation in roles associated with criminal cases.
 - Regarding roles, most are suspects (373) and victims (317), with fewer witnesses (117) and a small group with both roles (22). This distribution indicates a complex structure where some individuals may be involved in multiple aspects of crimes.
 - Several communities are composed exclusively of a single role, especially victims (communities 23, 37, 44) and suspects (communities 9, 19, 22, 27, 31, 39, 40), as well as a witness community (9). This segregation by role within communities suggests clear polarization, possibly reflecting groups with differentiated functions and implications in criminal dynamics. The marked separation between suspects and victims may indicate that the network is not just a heterogeneous set, but is structured according to social and legal roles, with few points of contact between communities of different roles.
 
-<img width="301" height="251" alt="image" src="https://github.com/user-attachments/assets/e90bcbd2-08f8-46b6-8a9f-75705e6d931b" />
+<img width="451.5" height="376.5" alt="image" src="https://github.com/user-attachments/assets/e90bcbd2-08f8-46b6-8a9f-75705e6d931b" />
+
+(Translation: Distribution of roles by gender, x: role, y: number of persons)
 
 - The distribution of roles by gender was also analyzed: men predominate in all cases, but the proportion difference is greater among victims and suspects, indicating more female witnesses.
 
 
-<img width="299" height="229" alt="image" src="https://github.com/user-attachments/assets/afd377d3-1d90-4fcb-8311-073b09a0145f" />
+<img width="448.5" height="343.5" alt="image" src="https://github.com/user-attachments/assets/afd377d3-1d90-4fcb-8311-073b09a0145f" />
+
+(Translation: Distribution of degree by gender, x: gender, y: number of connections)
 
 - The degree distribution by gender shows that men have a higher number of connections than women, with a higher degree in the third quartile and upper whisker.
 
 The graph of the person with the highest centrality was also visualized, confirming previous conclusions that Katz Luella is the leader or central figure of the network: 
 
-<img width="367" height="275" alt="image" src="https://github.com/user-attachments/assets/c6dc6147-99fa-4c77-ac7c-750d82c99b8f" />
+<img width="550.5" height="412.5" alt="image" src="https://github.com/user-attachments/assets/c6dc6147-99fa-4c77-ac7c-750d82c99b8f" />
+
+(Translation: KatzLuella's Egonetwork)
 
 A representation of the main component with names was also created, showing clear hubs that could be leaders of criminal groups:
 
-<img width="325" height="294" alt="image" src="https://github.com/user-attachments/assets/063dc8bc-a104-4e7a-8981-f02aa8062963" />
+<img width="487.5" height="441" alt="image" src="https://github.com/user-attachments/assets/063dc8bc-a104-4e7a-8981-f02aa8062963" />
 
+(Translation: Principal component with no names)
 
 Finally, communities among suspects were visualized to observe the different gang groups present in the network:
-<img width="329" height="289" alt="image" src="https://github.com/user-attachments/assets/7c6cfbe2-aee5-488b-97c6-ef58039362b3" />
+
+<img width="493.5" height="433.5" alt="image" src="https://github.com/user-attachments/assets/7c6cfbe2-aee5-488b-97c6-ef58039362b3" />
+
+(Translation: Communities between suspects)
 
 ## References
-Akhtar, M. S., & Saeed, A. (2021). Social Network Analysis: From Graph Theory to 
-Applications with Python. arXiv preprint arXiv:2102.10014. 
-https://arxiv.org/abs/2102.10014
-Hagberg, A., Schult, D., & Swart, P. (2023). NetworkX documentation. NetworkX Project.
-https://networkx.org/documentation/stable/tutorial.html
-Jérôme Kunegis. KONECT – The Koblenz Network Collection. In Proc. Int. Conf. on World 
-Wide Web Companion, pages 1343–1350, 2013. [ http ]
-NetworkX Developers. (2023). Bipartite graphs — NetworkX documentation.
-https://networkx.org/documentation/stable/reference/algorithms/bipartite.html
+- Akhtar, M. S., & Saeed, A. (2021). Social Network Analysis: From Graph Theory to Applications with Python. arXiv preprint arXiv:2102.10014. https://arxiv.org/abs/2102.10014
+- Hagberg, A., Schult, D., & Swart, P. (2023). NetworkX documentation. NetworkX Project. https://networkx.org/documentation/stable/tutorial.html
+- Jérôme Kunegis. KONECT – The Koblenz Network Collection. In Proc. Int. Conf. on World Wide Web Companion, pages 1343–1350, 2013.
+- NetworkX Developers. (2023). Bipartite graphs — NetworkX documentation. https://networkx.org/documentation/stable/reference/algorithms/bipartite.html
 
 ## Author
 Cristina Galter, 2025
